@@ -1,0 +1,212 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/youtube_sub_counter/sub_counter.gd" type="Script" id=1]
+[ext_resource path="res://addons/youtube_sub_counter/ressources/user.png" type="Texture" id=2]
+[ext_resource path="res://addons/youtube_sub_counter/ressources/roboto_font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/youtube_sub_counter/ressources/lime.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+outline_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="YouTube Subscriber Counter" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 720, 600 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sub_request" type="HTTPRequest" parent="."]
+
+[node name="username_request" type="HTTPRequest" parent="."]
+
+[node name="background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="interface" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 23.0
+margin_right = -24.0
+margin_bottom = -25.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 64
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sub_counter" type="Label" parent="interface"]
+margin_top = 158.0
+margin_right = 784.0
+margin_bottom = 393.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttoons" type="VBoxContainer" parent="interface"]
+margin_left = 848.0
+margin_right = 976.0
+margin_bottom = 552.0
+size_flags_vertical = 3
+custom_constants/separation = 14
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="live" type="Label" parent="interface/buttoons"]
+margin_top = 109.0
+margin_right = 128.0
+margin_bottom = 159.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Live"
+align = 1
+
+[node name="settings" type="Button" parent="interface/buttoons"]
+margin_top = 173.0
+margin_right = 128.0
+margin_bottom = 301.0
+rect_min_size = Vector2( 128, 128 )
+focus_mode = 0
+size_flags_horizontal = 6
+enabled_focus_mode = 0
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="takelime" type="Button" parent="interface/buttoons"]
+modulate = Color( 0.886275, 0.886275, 0.886275, 1 )
+margin_top = 315.0
+margin_right = 128.0
+margin_bottom = 443.0
+rect_min_size = Vector2( 128, 128 )
+focus_mode = 0
+size_flags_horizontal = 6
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="profile" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -363.0
+margin_top = -100.0
+margin_right = 364.0
+margin_bottom = 129.0
+window_title = "Profile Settings"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main" type="VBoxContainer" parent="profile"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="url_container" type="HBoxContainer" parent="profile/main"]
+margin_right = 695.0
+margin_bottom = 29.0
+
+[node name="label" type="Label" parent="profile/main/url_container"]
+margin_right = 225.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 225, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "YouTube Channel"
+
+[node name="name_input" type="LineEdit" parent="profile/main/url_container"]
+margin_left = 229.0
+margin_right = 695.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="token_container" type="HBoxContainer" parent="profile/main"]
+margin_top = 37.0
+margin_right = 695.0
+margin_bottom = 66.0
+
+[node name="label" type="Label" parent="profile/main/token_container"]
+margin_right = 225.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 225, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Custom Token"
+
+[node name="token_input" type="LineEdit" parent="profile/main/token_container"]
+margin_left = 229.0
+margin_right = 695.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="button_container" type="HBoxContainer" parent="profile/main"]
+margin_top = 177.0
+margin_right = 695.0
+margin_bottom = 197.0
+size_flags_vertical = 10
+
+[node name="close" type="Button" parent="profile/main/button_container"]
+margin_right = 47.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 47, 20 )
+text = "Close"
+
+[node name="save" type="Button" parent="profile/main/button_container"]
+margin_left = 654.0
+margin_right = 695.0
+margin_bottom = 20.0
+size_flags_horizontal = 10
+text = "Save"
+
+[node name="reload" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="request_completed" from="sub_request" to="." method="_on_sub_request_completed"]
+[connection signal="request_completed" from="username_request" to="." method="_on_username_request_completed"]
+[connection signal="pressed" from="interface/buttoons/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="interface/buttoons/takelime" to="." method="_on_takelime_pressed"]
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
